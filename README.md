@@ -8,4 +8,4 @@ Real estate management and property operations platform (Project 01, VIRELEO).
 - Database: PostgreSQL
 
 ## Status
-Day 1: project setup in progress.
+Day 2: authentication (login, JWT, Admin/Agent roles) complete.

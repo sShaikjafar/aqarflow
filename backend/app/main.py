@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.api.v1 import auth
 from app.core.database import get_db
 
 app = FastAPI(title="AqarFlow API", version="0.1.0")
@@ -14,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth.router, prefix="/api/v1")
 
 
 @app.get("/api/v1/health")

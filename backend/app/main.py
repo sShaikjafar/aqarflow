@@ -1,10 +1,12 @@
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from app.api.v1 import auth
+from app.api.v1 import auth, properties
 from app.core.database import get_db
+from app.core.storage import UPLOAD_DIR
 
 app = FastAPI(title="AqarFlow API", version="0.1.0")
 
@@ -17,6 +19,8 @@ app.add_middleware(
 )
 
 app.include_router(auth.router, prefix="/api/v1")
+app.include_router(properties.router, prefix="/api/v1")
+app.mount("/media", StaticFiles(directory=UPLOAD_DIR), name="media")
 
 
 @app.get("/api/v1/health")

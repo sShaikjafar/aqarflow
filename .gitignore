@@ -222,3 +222,5 @@ __marimo__/
 !frontend/lib/
 
 !frontend/lib/
+
+backend/uploads/

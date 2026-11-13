@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from app.api.v1 import auth, properties
+from app.api.v1 import auth, properties, public
 from app.core.database import get_db
 from app.core.storage import UPLOAD_DIR
 
@@ -20,6 +20,7 @@ app.add_middleware(
 
 app.include_router(auth.router, prefix="/api/v1")
 app.include_router(properties.router, prefix="/api/v1")
+app.include_router(public.router, prefix="/api/v1")
 app.mount("/media", StaticFiles(directory=UPLOAD_DIR), name="media")
 
 

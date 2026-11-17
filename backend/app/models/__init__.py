@@ -1,3 +1,4 @@
+from app.models.activity import Activity  # noqa: F401
 from app.models.agency import Agency  # noqa: F401
 from app.models.lead import Contact, Lead  # noqa: F401
 from app.models.property import Property, PropertyMedia  # noqa: F401
